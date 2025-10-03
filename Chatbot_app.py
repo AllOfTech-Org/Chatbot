@@ -43,12 +43,13 @@ st.title("Welcome TO AllOfTech's Chatbot")
 
 # --- Sidebar Settings ---
 with st.sidebar:
-    logo_url = "https://your-logo-url-here.png"
     # --- Logo Section ---
+    logo_url = "https://alloftech-org.github.io/AllOfTech/images/Logo.png"  # 🔸 Replace with your actual logo URL or local path
+
     st.markdown(
         f"""
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="app://local{logo_url}" 
+            <img src="{logo_url}" 
                  style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
             <h2 style="margin-top: 10px; font-size: 20px;">AllOfTech</h2>
         </div>
@@ -65,6 +66,7 @@ with st.sidebar:
             "content": "Assalamu alaikum! 🌟 Welcome to AllOfTech’s chatbot! I’m here to answer your questions about our innovative solutions in AI/ML, blockchain, web and mobile app development, UX/UI design, and branding. How can we help bring your ideas to life?"
         }]
     st.button("Clear Chat History", on_click=clear_chat_history)
+
 
 # --- Initialize Chat History ---
 if "messages" not in st.session_state:
