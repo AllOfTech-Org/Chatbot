@@ -8,19 +8,46 @@ from Chatbot import chatbot   # assuming you saved your code in chatbot.py
 # Load environment variables
 load_dotenv()
 
+# --- Logo Path ---
+logo_path = "https://alloftech-org.github.io/AllOfTech/images/Logo.png"  # ✅ Use your uploaded logo
+
 # --- Page Configuration ---
-st.set_page_config(page_title="AllOfTech's Chatbot", page_icon="🍁", layout="centered")
+st.set_page_config(
+    page_title="AllOfTech's Chatbot",
+    page_icon=logo_path,   # ✅ Custom tab icon
+    layout="centered"
+)
+
+# --- Custom CSS to hide Streamlit's top bar & footer ---
+hide_streamlit_style = """
+    <style>
+    /* Hide top-right menu bar */
+    #MainMenu {visibility: hidden;}
+
+    /* Hide footer */
+    footer {visibility: hidden;}
+
+    /* Optional: Hide toolbar */
+    header [data-testid="stToolbar"] {display: none;}
+
+    /* Optional: remove padding at top */
+    .block-container {
+        padding-top: 1rem;
+    }
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# --- Title ---
 st.title("Welcome TO AllOfTech's Chatbot")
 
 # --- Sidebar Settings ---
 with st.sidebar:
     # --- Logo Section ---
-    logo_url = "https://alloftech-org.github.io/AllOfTech/images/Logo.png"  # 🔸 Replace with your actual logo URL or local path
-
     st.markdown(
         f"""
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="{logo_url}" 
+            <img src="app://local{logo_path}" 
                  style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
             <h2 style="margin-top: 10px; font-size: 20px;">AllOfTech</h2>
         </div>
