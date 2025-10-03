@@ -43,11 +43,12 @@ st.title("Welcome TO AllOfTech's Chatbot")
 
 # --- Sidebar Settings ---
 with st.sidebar:
+    logo_url = "https://your-logo-url-here.png"
     # --- Logo Section ---
     st.markdown(
         f"""
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="app://local{logo_path}" 
+            <img src="app://local{logo_url}" 
                  style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
             <h2 style="margin-top: 10px; font-size: 20px;">AllOfTech</h2>
         </div>
