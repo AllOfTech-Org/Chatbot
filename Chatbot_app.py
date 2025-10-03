@@ -14,7 +14,23 @@ st.title("Welcome TO AllOfTech's Chatbot")
 
 # --- Sidebar Settings ---
 with st.sidebar:
+    # --- Logo Section ---
+    logo_url = "images\Logo.png"  # 🔸 Replace with your actual logo URL or local path
+
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="{logo_url}" 
+                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+            <h2 style="margin-top: 10px; font-size: 20px;">AllOfTech</h2>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.title("Chat Settings")
+
+    # --- Clear Chat Button ---
     def clear_chat_history():
         st.session_state.messages = [{
             "role": "assistant",
