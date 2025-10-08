@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 PROCESSED_DATA_DIR = "processed_data"
 MODEL_NAME = "all-MiniLM-L6-v2"
 OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
-OPENROUTER_MODEL = "nousresearch/deephermes-3-llama-3-8b-preview:free"
+OPENROUTER_MODEL = "deepseek/deepseek-r1-0528-qwen3-8b:free"
 
 # Initialize embeddings model
 embeddings_model = SentenceTransformer(MODEL_NAME)
