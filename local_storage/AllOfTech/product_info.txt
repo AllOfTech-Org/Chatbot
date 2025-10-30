@@ -85,3 +85,123 @@ Reddit: https://www.reddit.com/user/Rare-Philosophy387/
 
 Start Your Project: Fill out our project form at https://alloftech-org.github.io/AllOfTech/Start_Your_Project.html
 
+
+
+AllofTech Policies & Guidelines:
+
+1 Privacy Policy
+AllofTech is committed to protecting client data and maintaining strict confidentiality.
+1.1 Data Collected
+• Client name, company name, and contact details (email, phone).
+• Project-related information and requirements.
+• Payment or billing information, where applicable.
+1.2 Purpose of Data Collection
+• To communicate about projects and provide updates.
+• For invoicing and billing purposes.
+• To improve services and maintain client relationships.
+1.3 Data Protection Measures
+• All client data is stored securely within AllofTech’s systems and is fully encrypted.
+• Only authorized team members have access.
+• Client data will never be shared with third parties.
+1.4 Client Rights
+• Clients may request access to their data at any time.
+• Clients may request data deletion after project completion.
+• Requests for data updates or deletion will be processed within 7 working days.
+1
+End-to-End Technology & Design Partner AllofTech Policies & Guidelines
+2 Code of Conduct / Agency Promise
+AllofTech is committed to the highest standards of professionalism, creativity, and
+transparency.
+2.1 Commitments
+• Communicate openly, honestly, and respectfully with every client.
+• Deliver high-quality work that meets or exceeds expectations.
+• Ensure fairness and professionalism in all dealings.
+• Handle all data with strict confidentiality.
+• Use AI, automation, and digital tools responsibly and ethically.
+• Continuously improve through innovation and learning.
+3 Support & Maintenance Policy
+3.1 Support Duration
+• Complimentary technical support is provided for 30–45 days after project deliv-
+ery.
+3.2 Included Support
+• Bug fixes and minor functionality corrections.
+• Assistance with basic usage or integration questions.
+3.3 Not Included
+• New feature additions, redesigns, or major scope changes.
+• Platform migrations or major software updates.
+3.4 Pricing for Extended Support
+• Extended support plans are available based on project complexity and client
+needs. Pricing will be discussed individually.
+4 Refund & Revision Policy
+4.1 Deposit & Payment
+• 40% upfront deposit is required to start the project.
+• Remaining 60% is due upon delivery of the project.
+2
+End-to-End Technology & Design Partner AllofTech Policies & Guidelines
+4.2 Revisions
+• Two (2) rounds of revisions are included per project.
+• Additional revisions or major changes may incur extra fees.
+• Revisions must be requested within 7 days of delivery.
+4.3 Refund Conditions
+• Refunds are only applicable if AllofTech fails to deliver the agreed work within the
+timeline and no revisions are requested.
+• If a client cancels before work begins, the full deposit may be refunded.
+5 Hosting / Server Support Policy
+5.1 Hosting Options
+• Only AWS or cloud-based hosting is provided.
+5.2 Data Responsibility & Backups
+• Clients are responsible for maintaining their own backups unless a premium
+backup plan is purchased.
+• Emergency recovery support is available for premium plan clients.
+5.3 Uptime & Monitoring
+• Hosting uptime is maintained at 99% or above, excluding scheduled mainte-
+nance.
+6 Confidentiality / NDA
+AllofTech ensures that all sensitive project information remains confidential.
+6.1 Obligations
+• Both parties must not disclose, copy, or distribute confidential information without
+written permission.
+• Confidentiality remains in effect for two years after project completion unless
+otherwise agreed.
+6.2 Exclusions
+• Information already public or independently obtained is not considered confiden-
+tial.
+3
+End-to-End Technology & Design Partner AllofTech Policies & Guidelines
+7 Terms of Service
+7.1 Payments & Delivery
+• Payment is accepted via Visa or card payments.
+• Standard project timelines are provided, and any delays are communicated promptly.
+• If AllofTech causes delays beyond agreed timelines, discounts may apply at our
+discretion.
+• If the client requires expedited delivery, additional charges may apply.
+7.2 Intellectual Property
+• Ownership of all deliverables transfers to the client upon final payment unless
+otherwise stated.
+7.3 Limitation of Liability
+• AllofTech is not liable for indirect or consequential losses arising from service
+use.
+7.4 Termination
+• Either party may terminate the contract with written notice if obligations are not
+met.
+8 Service Level Agreement (SLA)
+8.1 Support Response & Resolution
+• Support inquiries are acknowledged within 24 hours.
+• Critical issues are resolved within 1–3 business days.
+8.2 Maintenance Schedule
+• Routine updates and maintenance are performed monthly.
+8.3 Performance Standards
+• Hosted services aim for 99% uptime and reliable performance.
+8.4 Escalation Procedure
+• Unresolved issues are escalated to senior technical or management staff.
+4
+End-to-End Technology & Design Partner AllofTech Policies & Guidelines
+9 Communication Policy
+9.1 Preferred Channels
+• Email, WhatsApp, and Google Meet are primary communication channels.
+9.2 Response Times
+• Messages are acknowledged within 24–48 business hours.
+9.3 Meetings & Feedback
+• Meetings can be scheduled virtually or in-person to review milestones or feed-
+back.
+• Clients are expected to provide consolidated feedback during revision stages

@@ -76,15 +76,66 @@ class SimpleChatManager:
         if not product_data.faiss_index or not product_data.chunks:
             logger.warning(f"No FAISS index or chunks found for product {product}")
             return []
-        # Return ALL chunks for the product to ensure full info is provided
-        return [f"[{product.upper()}] {chunk}" for chunk in product_data.chunks]
+        try:
+            query_embedding = embeddings_model.encode([query])[0]
+            distances, indices = product_data.faiss_index.search(
+                query_embedding.reshape(1, -1).astype('float32'), k
+            )
+            relevant_chunks = []
+            for idx in indices[0]:
+                if idx < len(product_data.chunks):
+                    chunk = product_data.chunks[idx]
+                    relevant_chunks.append(f"[{product.upper()}] {chunk}")
+            if not relevant_chunks:
+                logger.info(f"No relevant chunks found for product {product}")
+                return []
+            return relevant_chunks
+        except Exception as e:
+            logger.error(f"Error searching chunks for product {product}: {str(e)}")
+            return []
 
     def generate_response(self, query: str, context: list, product: str) -> str:
-        # If context exists, return the full product info directly (all chunks combined)
-        if context:
-            return "\n\n".join(context)
-        # Fallback welcome if no context/data is available
-        return "Welcome to AllOfTech! We're a technology agency specializing in AI/ML, blockchain, web and mobile apps, UX/UI design, and branding. How can we help you achieve your goals?"
+        if not context:
+            return "Welcome to AllOfTech! We're a technology agency specializing in AI/ML, blockchain, web and mobile apps, UX/UI design, and branding. How can we help you achieve your goals?"
+
+        prompt = f"""Context:\n{chr(10).join(context)}\n\nInstructions:\n
+        You are the voice of AllOfTech, a cutting-edge technology agency dedicated to delivering innovative solutions in AI/ML, blockchain, web development, mobile apps, UX/UI design, and graphics & branding. Your responses should reflect our commitment to empowering businesses with tailored, scalable, and secure digital ecosystems.
+
+        **Core Behavior:**
+        - Use a professional, approachable, and customer-focused tone.
+        - Be clear, concise, and eager to assist with actionable insights.
+        - Highlight AllOfTech's expertise in technology and design when relevant.
+        - If asked about the agency, say: "AllOfTech is a technology agency specializing in AI/ML, blockchain, web and mobile development, UX/UI design, and branding. We're here to transform your ideas into impactful digital solutions."
+        - Avoid overly technical jargon unless the query demands it, ensuring responses are accessible to all clients.
+        - If relevant, encourage users to connect via our contact channels for project discussions.
+
+        Respond to: "{query}"
+        """
+
+        try:
+            response = requests.post(
+                url="https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                data=json.dumps({
+                    "model": OPENROUTER_MODEL,
+                    "messages": [
+                        {"role": "user", "content": prompt}
+                    ],
+                })
+            )
+
+            if response.status_code == 200:
+                result = response.json()
+                return result["choices"][0]["message"]["content"]
+            else:
+                logger.error(f"OpenRouter API error: {response.text}")
+                return "Sorry, I faced an issue while generating the response."
+        except Exception as e:
+            logger.error(f"Error generating response: {str(e)}")
+            return "System interruption detected. Please try again shortly."
 
 # Initialize the simple chat manager
 simple_chat_manager = SimpleChatManager()
