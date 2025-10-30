@@ -24,7 +24,6 @@ PROCESSED_DATA_DIR = "processed_data"
 MODEL_NAME = "all-MiniLM-L6-v2"
 OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
 OPENROUTER_MODEL = "deepseek/deepseek-r1-0528-qwen3-8b:free"
-RELEVANCE_SIM_THRESHOLD = 0.35  # cosine similarity threshold to accept context
 
 # Initialize embeddings model
 embeddings_model = SentenceTransformer(MODEL_NAME)
@@ -82,17 +81,11 @@ class SimpleChatManager:
             distances, indices = product_data.faiss_index.search(
                 query_embedding.reshape(1, -1).astype('float32'), k
             )
-            # Compute cosine similarities for top-k to enforce relevance
-            # Use stored embeddings for robust similarity check
-            query_norm = np.linalg.norm(query_embedding) + 1e-12
             relevant_chunks = []
-            for rank, idx in enumerate(indices[0]):
+            for idx in indices[0]:
                 if idx < len(product_data.chunks):
-                    chunk_embedding = product_data.embeddings[idx]
-                    sim = float(np.dot(query_embedding, chunk_embedding) / ((np.linalg.norm(chunk_embedding) + 1e-12) * query_norm))
-                    if sim >= RELEVANCE_SIM_THRESHOLD:
-                        chunk = product_data.chunks[idx]
-                        relevant_chunks.append(f"[{product.upper()}] {chunk}")
+                    chunk = product_data.chunks[idx]
+                    relevant_chunks.append(f"[{product.upper()}] {chunk}")
             if not relevant_chunks:
                 logger.info(f"No relevant chunks found for product {product}")
                 return []
@@ -103,24 +96,18 @@ class SimpleChatManager:
 
     def generate_response(self, query: str, context: list, product: str) -> str:
         if not context:
-            return (
-                "Welcome to AllOfTech! We're a technology agency specializing in AI/ML, blockchain, web and mobile apps, UX/UI design, and branding. How can we help you achieve your goals?"
-            )
+            return "Welcome to AllOfTech! We're a technology agency specializing in AI/ML, blockchain, web and mobile apps, UX/UI design, and branding. How can we help you achieve your goals?"
 
         prompt = f"""Context:\n{chr(10).join(context)}\n\nInstructions:\n
         You are the voice of AllOfTech, a cutting-edge technology agency dedicated to delivering innovative solutions in AI/ML, blockchain, web development, mobile apps, UX/UI design, and graphics & branding. Your responses should reflect our commitment to empowering businesses with tailored, scalable, and secure digital ecosystems.
 
-        Core Behavior:
+        **Core Behavior:**
         - Use a professional, approachable, and customer-focused tone.
         - Be clear, concise, and eager to assist with actionable insights.
         - Highlight AllOfTech's expertise in technology and design when relevant.
+        - If asked about the agency, say: "AllOfTech is a technology agency specializing in AI/ML, blockchain, web and mobile development, UX/UI design, and branding. We're here to transform your ideas into impactful digital solutions."
         - Avoid overly technical jargon unless the query demands it, ensuring responses are accessible to all clients.
-
-        Grounding Rules (STRICT):
-        - Only use factual information that appears in the Context above. Do NOT invent or assume details that are not present in the Context.
-        - If the answer is not supported by the Context, say: "I don’t have that information in my current context." and suggest contacting us at contact.alloftech@gmail.com for confirmation.
-        - For payment questions: mention ONLY the methods explicitly present in the Context. Do NOT add new payment methods (e.g., PayPal) unless they appear in the Context.
-        - Keep answers concise and directly address the user's question.
+        - If relevant, encourage users to connect via our contact channels for project discussions.
 
         Respond to: "{query}"
         """
