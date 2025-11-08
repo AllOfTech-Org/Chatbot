@@ -9,7 +9,7 @@ from Chatbot import chatbot   # assuming you saved your code in chatbot.py
 load_dotenv()
 
 # --- Logo Path ---
-logo_path = "images\Logo.jpg" # ✅ Use your uploaded logo
+logo_path = "https://www.alloftech.site/images/Logo.jpg"  # ✅ Use your uploaded logo
 
 # --- Page Configuration ---
 st.set_page_config(
