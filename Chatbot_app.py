@@ -44,7 +44,7 @@ st.title("Welcome TO AllOfTech's Chatbot")
 # --- Sidebar Settings ---
 with st.sidebar:
     # --- Logo Section ---
-    logo_url = "https://alloftech-org.github.io/AllOfTech/images/Logo.png"  # 🔸 Replace with your actual logo URL or local path
+    logo_url = "https://www.alloftech.site/images/Logo.jpg"  # 🔸 Replace with your actual logo URL or local path
 
     st.markdown(
         f"""
